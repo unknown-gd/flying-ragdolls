@@ -62,10 +62,9 @@ hook.Add( "CreateClientsideRagdoll", addonName, function( entity, ragdoll )
             if not data[2] then continue end
 
             local func = directions[ data[1] ]
-            if func then
-                self:ApplyForceCenter( func( entity:EyeAngles() ) )
-                break
-            end
+            if not func then continue end
+
+            self:ApplyForceCenter( func( entity:EyeAngles() ) )
         end
     end )
 
